@@ -35,7 +35,7 @@ export class AppService {
   ];
 
   getHello(): string {
-    return 'Welcome to the car shop API';
+    return 'Welcome to the car API';
   }
 
   getCarById(id: number): Car {

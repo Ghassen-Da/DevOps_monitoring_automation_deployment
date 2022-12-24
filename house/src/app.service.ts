@@ -11,7 +11,7 @@ export class AppService {
   ];
 
   getHello(): string {
-    return 'Welcome to the housing API';
+    return 'Welcome to the house API';
   }
 
   getHouseById(id: number): House {

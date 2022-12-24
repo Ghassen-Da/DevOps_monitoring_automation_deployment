@@ -14,7 +14,7 @@ export class LokiConfig {
     this.logger = createLogger({
       transports: [
         new LokiTransport({
-          host: 'http://localhost:3100',
+          host: 'http://host.docker.internal:3100',
           labels: { app: 'e-commerce' },
           json: true,
           format: format.json(),
