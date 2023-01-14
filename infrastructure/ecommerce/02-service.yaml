@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-ecommerce
+  annotations:
+    se7entyse7en.prometheus/scrape: "true"
+    se7entyse7en.prometheus/path: "/metrics"
+    se7entyse7en.prometheus/port: "9464"
+spec:
+  selector:
+    app: ecommerce
+  ports:
+    - name: "main"
+      port: 8080
+      targetPort: 8080
+    - name: "prometheus"
+      port: 9464
+      targetPort: 9464

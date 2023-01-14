@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: house-deployment
+  labels:
+    app: house
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: house
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: house
+    spec:
+      containers:
+        - name: house
+          image: ghassenda/projetdevops-house
+          ports:
+            - containerPort: 3002

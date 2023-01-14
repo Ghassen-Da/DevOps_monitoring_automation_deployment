@@ -24,14 +24,14 @@ export class AppService {
   getCarById(id: number): Observable<AxiosResponse<Car>> {
     this.prometheusConfig.counterCarRequests.add(1, { pid: process.pid });
     return this.httpService
-      .get('http://host.docker.internal:3001/car/' + id)
+      .get('http://service-car:3001/car/' + id)
       .pipe(map((response) => response.data));
   }
 
   getHouseById(id: number): Observable<AxiosResponse<House>> {
     this.prometheusConfig.counterHouseRequests.add(1, { pid: process.pid });
     return this.httpService
-      .get('http://host.docker.internal:3002/house/' + id)
+      .get('http://service-house:3002/house/' + id)
       .pipe(map((response) => response.data));
   }
 }

@@ -21,7 +21,7 @@ services:
       - --config.file=/etc/prometheus.yaml
       - --web.enable-remote-write-receiver
     volumes:
-      - ./monitoring_stack/prometheus.yaml:/etc/prometheus.yaml
+      - ./prometheus.yaml:/etc/prometheus.yaml
     ports:
       - "9090:9090"
     logging:
@@ -32,7 +32,7 @@ services:
   grafana:
     image: grafana/grafana:9.3.0
     volumes:
-      - ./monitoring_stack/grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+      - ./grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
     environment:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
@@ -63,18 +63,18 @@ services:
   # #     - tempo
   # #     - prometheus
 
-  ecommerce:
-    build: ./e-commerce
-    ports:
-      - 8080:8080
-      - 9464:9464 # For Prometheus
+  # ecommerce:
+  #   build: ../e-commerce
+  #   ports:
+  #     - 8080:8080
+  #     - 9464:9464 # For Prometheus
 
-  car:
-    build: ./car
-    ports:
-      - 3001:3001
+  # car:
+  #   build: ../car
+  #   ports:
+  #     - 3001:3001
 
-  house:
-    build: ./house
-    ports:
-      - 3002:3002
+  # house:
+  #   build: ../house
+  #   ports:
+  #     - 3002:3002

@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-devops-project
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: ecommerce.devops.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: service-ecommerce
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix
+    - host: car.devops.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: service-car
+                port:
+                  number: 3001
+            path: /
+            pathType: Prefix

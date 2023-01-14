@@ -28,6 +28,7 @@ export class PrometheusConfig {
 
   createCounterCarRequests() {
     this.counterCarRequests = this.meter.createCounter('counter-car-requests', {
+      
       monotonic: true,
       description: 'Counts total number of car requests',
     });
