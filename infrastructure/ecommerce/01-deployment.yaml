@@ -22,6 +22,7 @@ spec:
       containers:
         - name: ecommerce
           image: ghassenda/projetdevops-ecommerce
+          imagePullPolicy: "Always"
           ports:
             - containerPort: 8080
             - containerPort: 9464

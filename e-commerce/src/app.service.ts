@@ -18,7 +18,7 @@ export class AppService {
   ) {}
 
   getHello(): string {
-    return 'Welcome to the e-commerce API!!';
+    return 'Welcome to the e-commerce API!';
   }
 
   getCarById(id: number): Observable<AxiosResponse<Car>> {

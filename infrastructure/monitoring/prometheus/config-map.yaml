@@ -8,33 +8,27 @@ metadata:
 data:
   prometheus.yml: |-
     scrape_configs:
-      - job_name: "prometheus"
-        scrape_interval: 1s
-        scrape_timeout: 1s
-        static_configs:
-          - targets: ["localhost:9090"]
-          
       - job_name: 'kubernetes-service-endpoints'
 
-        scrape_interval: 1s
-        scrape_timeout: 1s
+        scrape_interval: 30s
+        scrape_timeout: 10s
 
         kubernetes_sd_configs:
         - role: endpoints
 
         relabel_configs:
-        - source_labels: [__meta_kubernetes_service_annotation_se7entyse7en_prometheus_scrape]
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_scrape]
           action: keep
           regex: true
-        - source_labels: [__meta_kubernetes_service_annotation_se7entyse7en_prometheus_scheme]
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_scheme]
           action: replace
           target_label: __scheme__
           regex: (https?)
-        - source_labels: [__meta_kubernetes_service_annotation_se7entyse7en_prometheus_path]
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_path]
           action: replace
           target_label: __metrics_path__
           regex: (.+)
-        - source_labels: [__address__, __meta_kubernetes_service_annotation_se7entyse7en_prometheus_port]
+        - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_port]
           action: replace
           target_label: __address__
           regex: ([^:]+)(?::\d+)?;(\d+)
