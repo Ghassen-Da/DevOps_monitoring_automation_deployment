@@ -26,9 +26,9 @@ spec:
         {{- end }}
     spec:
       containers:
-        - name: { { .Values.container.name } }
-          image: { { .Values.image.name } }:{{ .Values.image.tag }}
+        - name: {{ .Values.container.name }}
+          image: {{ .Values.image.name }}:{{ .Values.image.tag }}
           imagePullPolicy: "Always"
           ports:
-            - containerPort: { { .Values.http.port } }
+            - containerPort: {{ .Values.http.port }}
             - containerPort: 9464
