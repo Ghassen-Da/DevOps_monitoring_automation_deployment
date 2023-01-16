@@ -1,19 +1,21 @@
-# DevOps Project 
-
 ## Application
 3 microservices:
 - ecommerce microservice
 - car microservice
 - house microservice
 
-Helm chart for each microservice.  
-## Deployment
-We created the first micro-stack to deploy the aks cluster and create the different namespaces we need, then we use the output to install helm releases for each microservice in the default namespace.  
-Next we connect the kubectl to the cluster following the command bellow
-```shell
-terraform output kube_config > ~/.kube/config &&
-sed -e '2,$!d' -e '$d' ~/.kube/config > ~/.kube/config 
-```
-Finally we deploy prometheus, loki, grafana and monitoring components to the monitoring namespace and the dashboard components to the dashboard namespace.
+
+## Docker
+We dockerized the 3 microservices and pushed to Dockerhub.
 
 
+## Kubernetes
+
+### Namespaces
+![image](https://user-images.githubusercontent.com/56545375/212728246-330456e7-5764-41e4-90dd-20de936a129a.png)
+
+- Each microservice has Deployment + Service
+- We created Admin user
+- We created a dashboard that can be accessible only by the admin user
+- We created 2 ingress routes.
+- We
