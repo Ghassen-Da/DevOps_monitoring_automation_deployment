@@ -1,0 +1,19 @@
+deployment:
+  name: car-deployment
+  replicas: 1
+
+container:
+  name: car
+
+service:
+  name: service-car
+
+http:
+  port: 3001
+
+image:
+  name: ghassenda/projetdevops-car
+  tag: latest
+
+labels:
+  app: car
