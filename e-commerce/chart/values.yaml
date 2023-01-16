@@ -1,6 +1,6 @@
 deployment:
   name: ecommerce-deployment
-  replicas: 1
+  replicas: 3
 
 container:
   name: ecommerce
