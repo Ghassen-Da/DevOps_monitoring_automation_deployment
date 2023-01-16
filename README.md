@@ -64,4 +64,15 @@ All observability tools are in the namespace monitoring.
 - The service's type of Grafana is NodePort.
 - Prometheus is exposed on port 32000
 
+## GitOps (ArgoCD)
+
+![image](https://user-images.githubusercontent.com/56545375/212730968-f1d834a0-11c1-41bb-b2ef-19a6d043494a.png)
+
+- Deployed in argocd namespace
+
+
+
+## Terraform
+
+
 
