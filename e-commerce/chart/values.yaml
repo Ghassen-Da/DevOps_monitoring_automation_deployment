@@ -1,0 +1,19 @@
+deployment:
+  name: ecommerce-deployment
+  replicas: 1
+
+container:
+  name: ecommerce
+
+service:
+  name: service-ecommerce
+
+http:
+  port: 8080
+
+image:
+  name: ghassenda/projetdevops-ecommerce
+  tag: latest
+
+labels:
+  app: ecommerce

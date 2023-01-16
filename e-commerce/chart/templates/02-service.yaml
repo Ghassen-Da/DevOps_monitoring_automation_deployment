@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  selector:
+    {{- range $key, $val := .Values.labels }}
+    {{ $key }}: {{ $val | quote }}
+    {{- end }}
+  ports:
+    - name: "main"
+      port: {{ .Values.http.port }}
+      targetPort: {{ .Values.http.port }}
+    - name: "prometheus"
+      port: 9464
+      targetPort: 9464
