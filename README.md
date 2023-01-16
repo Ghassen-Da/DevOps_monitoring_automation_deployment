@@ -24,6 +24,11 @@ We dockerized the 3 microservices and pushed to Dockerhub.
 
 ### App
 
+## Technologies
+
+![image](https://user-images.githubusercontent.com/56545375/212731484-b68753a6-1c5f-442c-b298-785ad87985ea.png)
+
+
 ![image](https://user-images.githubusercontent.com/56545375/212729274-b469f81a-dedc-4634-84f7-3278cda94b46.png)
 
 - The 3 microservices are in the default namespace.
@@ -69,7 +74,6 @@ All observability tools are in the namespace monitoring.
 ![image](https://user-images.githubusercontent.com/56545375/212730968-f1d834a0-11c1-41bb-b2ef-19a6d043494a.png)
 
 - Deployed in argocd namespace
-
 
 
 ## Terraform
