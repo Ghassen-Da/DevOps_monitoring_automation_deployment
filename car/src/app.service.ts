@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { PrometheusConfig } from './config/prometheus.config';
 import { Car } from './models/Car.entity';
 
 @Injectable()
 export class AppService {
+  constructor(private readonly prometheusConfig: PrometheusConfig) {}
+
   cars: Car[] = [
     {
       id: 1,
@@ -39,10 +42,11 @@ export class AppService {
   }
 
   getCarById(id: number): Car {
-    let selectedCar:Car=null
+    this.prometheusConfig.counterCarRequests.add(1, { pid: process.pid });
+    let selectedCar: Car = null;
     this.cars.forEach((car) => {
       if (car.id == id) {
-        selectedCar=car;
+        selectedCar = car;
       }
     });
     return selectedCar;

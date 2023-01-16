@@ -1,6 +1,6 @@
 deployment:
   name: house-deployment
-  replicas: 1
+  replicas: 3
 
 container:
   name: house

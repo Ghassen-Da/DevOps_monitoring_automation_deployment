@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
 import { map, Observable } from 'rxjs';
 import { PrometheusConfig } from './config/prometheus.config';
@@ -8,9 +8,6 @@ import { House } from './models/House.entity';
 
 @Injectable()
 export class AppService {
-
-  // nestjs default logger
-  private readonly logger = new Logger(PrometheusConfig.name);
 
   constructor(
     private readonly httpService: HttpService,
