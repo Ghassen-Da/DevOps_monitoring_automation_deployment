@@ -1,6 +1,6 @@
 deployment:
   name: car-deployment
-  replicas: 10
+  replicas: 5
 
 container:
   name: car
