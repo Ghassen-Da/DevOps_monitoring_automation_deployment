@@ -1,0 +1,19 @@
+deployment:
+  name: house-deployment
+  replicas: 1
+
+container:
+  name: house
+
+service:
+  name: service-house
+
+http:
+  port: 3002
+
+image:
+  name: ghassenda/projetdevops-house
+  tag: latest
+
+labels:
+  app: house
