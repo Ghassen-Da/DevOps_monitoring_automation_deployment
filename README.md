@@ -1,4 +1,4 @@
-#DevOps Project 
+# DevOps Project 
 
 This is an overview of the overall architecture:
 ![image](https://user-images.githubusercontent.com/53980293/212745188-779dfda5-4207-4948-8044-679584e2bc8c.png)
