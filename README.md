@@ -17,7 +17,7 @@ We dockerized the 3 microservices and pushed to Dockerhub.
 
 ### Ingress
 - We created 2 ingress routes.
-- ![image](https://user-images.githubusercontent.com/56545375/212728759-103afcd2-1bdb-46f3-9e78-30f6a9538f2b.png)
+![image](https://user-images.githubusercontent.com/56545375/212728759-103afcd2-1bdb-46f3-9e78-30f6a9538f2b.png)
 
 
 ### App
@@ -29,6 +29,7 @@ We dockerized the 3 microservices and pushed to Dockerhub.
 
 ### Dashboard
 ![image](https://user-images.githubusercontent.com/56545375/212728634-113630a9-0636-438e-821d-e97a0942fc00.png)
+
 - We created Admin user
 - We created a dashboard that can be accessible only by the admin user
 
