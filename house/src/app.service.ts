@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { PrometheusConfig } from './config/prometheus.config';
 import { House } from './models/House.entity';
 
 @Injectable()
 export class AppService {
+  constructor(private readonly prometheusConfig: PrometheusConfig) {}
+
   houses: House[] = [
     { id: 1, adress: 'Lac', ownerName: 'Mostfa', price: 2000000 },
     { id: 2, adress: 'Carthage', ownerName: 'Mariem', price: 13000000 },
@@ -15,6 +18,7 @@ export class AppService {
   }
 
   getHouseById(id: number): House {
+    this.prometheusConfig.counterHouseRequests.add(1, { pid: process.pid });
     let selectedHouse: House = null;
     this.houses.forEach((house) => {
       if (house.id == id) {

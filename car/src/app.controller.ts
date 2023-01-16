@@ -1,10 +1,16 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Ip, Param, Req } from '@nestjs/common';
+import { randomUUID } from 'crypto';
 import { AppService } from './app.service';
+import { LokiConfig } from './config/loki_logger.config';
 import { Car } from './models/Car.entity';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  private logger = this.loggerConfig.getLogger();
+  constructor(
+    private readonly appService: AppService,
+    private readonly loggerConfig: LokiConfig,
+  ) {}
 
   @Get()
   getHello(): string {
@@ -12,7 +18,22 @@ export class AppController {
   }
 
   @Get('/car/:id')
-  getCarInfoById(@Param('id') id: number): Car {
+  getCarInfoById(
+    @Param('id') id: number,
+    @Ip() ip,
+    @Req() request: Request,
+  ): Car {
+    let randomID = randomUUID();
+    request.headers['request_id'] = randomID;
+    this.logger.info({
+      message: 'Method: getCarInfoById',
+      labels: {
+        request_id: randomID,
+        client_ip: ip,
+        car_id: id,
+        status_code: 200,
+      },
+    });
     return this.appService.getCarById(id);
   }
 }
