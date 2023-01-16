@@ -8,6 +8,18 @@ data "terraform_remote_state" "aks" {
   }
 }
 
+resource "kubernetes_namespace" "monitoring" {
+  metadata {
+    name = "monitoring"
+  }
+}
+
+resource "kubernetes_namespace" "kubernetes-dashboard" {
+  metadata {
+    name = "kubernetes-dashboard"
+  }
+}
+
 resource "helm_release" "car" {
   name       = "car-chart"
   chart      = "../../car/chart"
@@ -30,5 +42,17 @@ resource "helm_release" "ecommerce" {
   chart      = "../../e-commerce/chart"
   values = [
     "${file("./values-helm/values.ecommerce.yaml")}"
+  ]
+}
+
+resource "helm_release" "ingress-nginx" {
+  name             = "ingress-nginx"
+  namespace        = "ingress-nginx"
+  create_namespace = true
+  repository       = "https://kubernetes.github.io/ingress-nginx"
+  chart            = "ingress-nginx"
+
+  values = [
+    file("./values-helm/values.ingress-nginx.yaml")
   ]
 }
